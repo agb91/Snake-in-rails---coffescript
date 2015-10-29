@@ -1,0 +1,69 @@
+I"h(function() {
+  var clean, color, draw, forward, serpente, time;
+
+  serpente = ['4-4', '4-5', '4-6', '4-7'];
+
+  time = 1000;
+
+  color = function(col, id) {
+    var cid;
+    cid = '#' + id;
+    return $('#' + id).css('background-color', col);
+  };
+
+  window.avvia = function() {
+    draw();
+    return setInterval(forward, time);
+  };
+
+  forward = function() {
+    return alert('forward');
+  };
+
+  clean = function() {
+    var a, i, id, j, k, l, len, ra, results, results1, results2, ri;
+    ri = (function() {
+      results = [];
+      for (j = 0; j <= 64; j++){ results.push(j); }
+      return results;
+    }).apply(this);
+    ra = (function() {
+      results1 = [];
+      for (k = 0; k <= 64; k++){ results1.push(k); }
+      return results1;
+    }).apply(this);
+    results2 = [];
+    for (l = 0, len = ri.length; l < len; l++) {
+      i = ri[l];
+      results2.push((function() {
+        var len1, m, results3;
+        results3 = [];
+        for (m = 0, len1 = ra.length; m < len1; m++) {
+          a = ra[m];
+          id = i + "-" + a;
+          results3.push(color('yellow', id));
+        }
+        return results3;
+      })());
+    }
+    return results2;
+  };
+
+  draw = function() {
+    var i, j, k, len, ref, results, results1, rs;
+    clean();
+    rs = (function() {
+      results = [];
+      for (var j = 0, ref = serpente.length; 0 <= ref ? j <= ref : j >= ref; 0 <= ref ? j++ : j--){ results.push(j); }
+      return results;
+    }).apply(this);
+    results1 = [];
+    for (k = 0, len = rs.length; k < len; k++) {
+      i = rs[k];
+      results1.push(color('black', serpente[i]));
+    }
+    return results1;
+  };
+
+}).call(this);
+:ET

@@ -1,0 +1,15 @@
+<%= form_for :utente, url: "/utente/create" do |f| %>
+  <p>
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,114 @@
+I"p(function() {
+  var clean, color, draw, forward, keyb, serpente, time;
+
+  serpente = ['4-4', '4-5', '4-6', '4-7'];
+
+  time = 1000;
+
+  window.addEventListener("keydown", (function(_this) {
+    return function(e) {
+      return keyb(e.KeyCode);
+    };
+  })(this));
+
+  keyb = function(i) {
+    alert(i);
+    if (i === 38) {
+      alert('su');
+    }
+    if (i === 40) {
+      alert('giu');
+    }
+    if (i === 39) {
+      alert('right');
+    }
+    if (i === 37) {
+      return alert('left');
+    }
+  };
+
+  color = function(col, id) {
+    var cid;
+    cid = '#' + id;
+    return $('#' + id).css('background-color', col);
+  };
+
+  window.avvia = function() {
+    draw();
+    return setInterval(forward, time);
+  };
+
+  forward = function() {
+    var a, dim, i, idlast, j, k, l, last, len, m, ref, results, results1, ri, ro, serpenteNew;
+    serpenteNew = [];
+    dim = serpente.length;
+    ri = (function() {
+      results = [];
+      for (var j = 1; 1 <= dim ? j <= dim : j >= dim; 1 <= dim ? j++ : j--){ results.push(j); }
+      return results;
+    }).apply(this);
+    ro = (function() {
+      results1 = [];
+      for (var k = 0; 0 <= dim ? k <= dim : k >= dim; 0 <= dim ? k++ : k--){ results1.push(k); }
+      return results1;
+    }).apply(this);
+    for (l = 0, len = ro.length; l < len; l++) {
+      i = ro[l];
+      serpenteNew[i - 1] = serpente[i];
+    }
+    idlast = serpente[dim - 1];
+    last = idlast.split('-')[0] + "-" + parseInt(parseInt(idlast.split('-')[1]) + 1);
+    serpenteNew[dim - 1] = last;
+    for (a = m = 0, ref = serpenteNew.length - 1; 0 <= ref ? m <= ref : m >= ref; a = 0 <= ref ? ++m : --m) {
+      serpente[a] = serpenteNew[a];
+    }
+    return draw();
+  };
+
+  clean = function() {
+    var a, i, id, j, k, l, len, ra, results, results1, results2, ri;
+    ri = (function() {
+      results = [];
+      for (j = 0; j <= 64; j++){ results.push(j); }
+      return results;
+    }).apply(this);
+    ra = (function() {
+      results1 = [];
+      for (k = 0; k <= 64; k++){ results1.push(k); }
+      return results1;
+    }).apply(this);
+    results2 = [];
+    for (l = 0, len = ri.length; l < len; l++) {
+      i = ri[l];
+      results2.push((function() {
+        var len1, m, results3;
+        results3 = [];
+        for (m = 0, len1 = ra.length; m < len1; m++) {
+          a = ra[m];
+          id = i + "-" + a;
+          results3.push(color('yellow', id));
+        }
+        return results3;
+      })());
+    }
+    return results2;
+  };
+
+  draw = function() {
+    var i, j, k, len, ref, results, results1, rs;
+    clean();
+    rs = (function() {
+      results = [];
+      for (var j = 0, ref = serpente.length; 0 <= ref ? j <= ref : j >= ref; 0 <= ref ? j++ : j--){ results.push(j); }
+      return results;
+    }).apply(this);
+    results1 = [];
+    for (k = 0, len = rs.length; k < len; k++) {
+      i = rs[k];
+      results1.push(color('black', serpente[i]));
+    }
+    return results1;
+  };
+
+}).call(this);
+:ET

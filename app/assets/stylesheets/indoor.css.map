@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,EACA;EACI,gBAAgB,EAAE,MAAM",
+"sources": ["indoor.scss"],
+"names": [],
+"file": "indoor.css"
+}

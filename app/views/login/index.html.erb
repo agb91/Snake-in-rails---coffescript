@@ -1,0 +1,18 @@
+<h1>Inserisci i dati di login!</h1>
+
+<%= form_for :utente, url: "/login/read" do |f| %>
+  <p>
+    <%= f.label :user %><br>
+    <%= f.text_field :user %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </p>
+
+  <p>
+    <!--<%= f.submit %>-->
+    <input type="submit" name="commit" value="Enter">
+  </p>
+<% end %>
