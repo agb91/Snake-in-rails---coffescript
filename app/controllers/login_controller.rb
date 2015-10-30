@@ -4,6 +4,7 @@ class LoginController < ApplicationController
   end
 
   def read
+    Rails.application.config.my_config = ad_params[:user]
     ##render plain: ad_params
     if check(ad_params[:user],ad_params[:password])
       redirect_to '/indoor/index'

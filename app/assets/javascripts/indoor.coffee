@@ -34,16 +34,17 @@ getColor = (id) ->
 
 nero = getColor '4-7'
 
-setLabirinth = ->
+setLabirinth = (l)->
   bars = parseInt($('#barriers').text().trim())
   for i in [0..bars-1]
      livello = $('#livello'+i).text().trim()
-     xstart = $('#xstart'+i).text().trim()
-     ystart = $('#ystart'+i).text().trim()
-     length = $('#length'+i).text().trim()
-     direction = $('#direction'+i).text().trim()
-     ostacolo = getLabVector(livello,xstart,ystart,length,direction)
-     writeLabirinth ostacolo
+     if parseInt(l)==parseInt(livello)
+        xstart = $('#xstart'+i).text().trim()
+        ystart = $('#ystart'+i).text().trim()
+        length = $('#length'+i).text().trim()
+        direction = $('#direction'+i).text().trim()
+        ostacolo = getLabVector(livello,xstart,ystart,length,direction)
+        writeLabirinth ostacolo
 
 writeLabirinth = (ostacolo) ->
   for i in [0..ostacolo.length-1]
@@ -70,10 +71,9 @@ getLabVector1 = (xstart, ystart, length) ->
      os1[i]= id
   return os1
 
-window.avvia = ->
-  $('#nascondi').hide();
+window.avvia = (l) ->
   draw()
-  setLabirinth()
+  setLabirinth(l)
   food()
   setInterval(forward, time)
 

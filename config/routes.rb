@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'navbar/index'
+
   get 'outdoor/index'
 
   get 'indoor/index'
+  post 'indoor/index'
 
   get 'utente/new'
 

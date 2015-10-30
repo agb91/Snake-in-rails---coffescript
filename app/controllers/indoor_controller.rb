@@ -1,13 +1,34 @@
 class IndoorController < ApplicationController
 
-  def index
-    createLabirinth
-    setLabirinth(1)
-    @repo = repository
+  def index()
+    a=Utente.where( user: Rails.application.config.my_config)[0]
+    @attuale = a.user
+    @record1 = a.record1
+    @record2 = a.record2
+    @record3 = a.record3
+    @actualRecord = 0
+    createLabirinth1
+    createLabirinth2
+    createLabirinth3
+    setLabirinth()
     @tabella =  creaTabella(32)
   end
 
-  def createLabirinth
+  def createLabirinth3
+    createBarrier(9,3,0,1,30,1)
+    createBarrier(10,3,30,1,20,2)
+    createBarrier(11,3,15,20,15,1)
+    createBarrier(12,3,15,10,10,2)
+  end
+
+  def createLabirinth2
+    createBarrier(5,2,0,1,30,2)
+    createBarrier(6,2,8,1,30,2)
+    createBarrier(7,2,16,1,30,2)
+    createBarrier(8,2,24,1,30,2)
+  end
+
+  def createLabirinth1
     createBarrier(1,1,0,0,32,1)
     createBarrier(2,1,0,0,32,2)
     createBarrier(3,1,32,0,32,2)
@@ -43,10 +64,8 @@ class IndoorController < ApplicationController
      @repo = @repo + '</div>'
   end
 
-  def setLabirinth(livello)
-    @lab = Labirinto.where(livello: livello)
-    ##TODO PER OGNI ELEMENTO DI LAB CREA DINAMICAMENTE UN IDDEN RIGA CON TUTTE LE INFO
-    ##variando incrementalmente l'id
+  def setLabirinth()
+    @lab = Labirinto.all()
     @livello = []
     @xstart = []
     @ystart = []
@@ -59,10 +78,11 @@ class IndoorController < ApplicationController
       @length.push(@lab[i].length)
       @direction.push(@lab[i].direction)
     end
+    @repo = repository
   end
 
   def creaTabella(dimensione)
-    @ris = '<table style="width:60%" >'
+    @ris = '<table width="100%">'
     for i in (0..dimensione)
       @ris = @ris + creaRiga(i,dimensione)
     end

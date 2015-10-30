@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20151028150232) do
   create_table "utentes", force: :cascade do |t|
     t.string   "user"
     t.string   "password"
+    t.string   "record1"
+    t.string   "record2"
+    t.string   "record3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
