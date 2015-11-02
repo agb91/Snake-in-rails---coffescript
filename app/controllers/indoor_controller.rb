@@ -1,5 +1,6 @@
 class IndoorController < ApplicationController
   respond_to :json, :js, :html
+  skip_before_action :verify_authenticity_token
 
   def index()
     a=Utente.where( user: Rails.application.config.my_config)[0]
