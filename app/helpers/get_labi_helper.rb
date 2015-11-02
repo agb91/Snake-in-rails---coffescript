@@ -1,0 +1,2 @@
+module GetLabiHelper
+end

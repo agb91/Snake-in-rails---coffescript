@@ -1,4 +1,5 @@
 class IndoorController < ApplicationController
+  respond_to :json, :js, :html
 
   def index()
     a=Utente.where( user: Rails.application.config.my_config)[0]
@@ -10,7 +11,7 @@ class IndoorController < ApplicationController
     createLabirinth1
     createLabirinth2
     createLabirinth3
-    setLabirinth()
+    #setLabirinth()
     @tabella =  creaTabella(32)
   end
 
@@ -64,7 +65,7 @@ class IndoorController < ApplicationController
      @repo = @repo + '</div>'
   end
 
-  def setLabirinth()
+=begin  def setLabirinth()
     @lab = Labirinto.all()
     @livello = []
     @xstart = []
@@ -80,6 +81,7 @@ class IndoorController < ApplicationController
     end
     @repo = repository
   end
+=end
 
   def creaTabella(dimensione)
     @ris = '<table width="100%">'

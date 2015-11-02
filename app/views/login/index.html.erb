@@ -1,4 +1,41 @@
-<h1 class="header">Inserisci i dati di login!</h1>
+<div class = "login">
+  <div class="body-login">
+    <div class="wrapper-login">
+      <div class="container-login">
+        <h1>Welcome</h1>
+
+        <form action= "/login/read" method="post" class="form-login">
+          <div class="row">
+            <input type="hidden" name="authenticity_token" value="itPANc5t7mCfAPFlXF1gCyvsRhBJinLLrRgcbPdq44qM4/SVuTuQt82+k1P/GB7jqw7HAaZEVqKPv2MwFRuLPw==" />
+            <input type="text" placeholder="Username" name = "utente[user]" id="utente_user">
+            <input type="password" placeholder="Password"  name = "utente[password]" id="utente_password">
+          </div>
+          <div class="row">
+           <p></p>
+          </div>
+          <div class="row">
+            <button type="submit" id="login-button" name="commit" value="Enter">Enter</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--<h1 class="header">Inserisci i dati di login!</h1>
 
 <%= form_for :utente, url: "/login/read" do |f| %>
   <p>
@@ -12,7 +49,7 @@
   </p>
 
   <p>
-    <!--<%= f.submit %>-->
     <input type="submit" name="commit" value="Enter">
   </p>
-<% end %>
+<% end %>-->
+

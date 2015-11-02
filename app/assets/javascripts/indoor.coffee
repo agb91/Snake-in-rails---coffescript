@@ -71,7 +71,20 @@ getLabVector1 = (xstart, ystart, length) ->
      os1[i]= id
   return os1
 
+readJSON = (url) ->
+  $.ajax
+      url: '/get_labi.json'
+      type: 'POST'
+      data :
+        level: $('#level').val()
+      success: (data, status, response) ->
+        alert data
+      error: ->
+        # Hard error
+      dataType: "json"
+
 window.avvia = (l) ->
+  console.log readJSON('/get_labi.json')
   draw()
   setLabirinth(l)
   food()

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'navbar/index'
 
+  resources :get_labi, only: [:index]
+
+  get 'navbar/index'
+
   get 'outdoor/index'
 
   get 'indoor/index'

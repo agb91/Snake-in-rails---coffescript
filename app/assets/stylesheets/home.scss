@@ -1,13 +1,13 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-.h1
+.home
 {
-  color: 'red';
-}
-
-h1
-{
-  color: 'red';
+  height: 800px;
+  background: -webkit-linear-gradient(green, blue); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(green, blue); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(green, blue); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(green, blue); /* Standard syntax */
+  .text
+  {
+    color: red;
+  }
 }
