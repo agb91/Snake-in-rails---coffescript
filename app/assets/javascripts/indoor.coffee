@@ -74,8 +74,14 @@ getLabVector1 = (xstart, ystart, length) ->
 readJSON = (livello) ->
   $.getJSON '/get_labi.json', (data) ->
     a = data.get_labi.length
+    ris = []
+    n = 0
     for i in [0..a-1]
-      console.log data.get_labi[i].level
+      attuale = data.get_labi[i].level
+      if parseInt(attuale)==parseInt(livello)
+        ris[n] = data.get_labi[i]
+        n = n+1
+    console.log ris
 
 window.avvia = (l) ->
   labs = readJSON(l).level
