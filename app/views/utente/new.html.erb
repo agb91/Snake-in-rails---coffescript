@@ -1,4 +1,42 @@
-<%= form_for :utente, url: "/utente/create" do |f| %>
+<div class = "users">
+  <div class="body-users">
+    <div class="wrapper-users">
+      <div class="container-users">
+        <h1>Welcome</h1>
+
+        <form action= "/utente/create" method="post" class="form-users">
+          <div class="row">
+            <input type="hidden" name="authenticity_token" value="itPANc5t7mCfAPFlXF1gCyvsRhBJinLLrRgcbPdq44qM4/SVuTuQt82+k1P/GB7jqw7HAaZEVqKPv2MwFRuLPw==" />
+            <input type="text" placeholder="Username" name = "utente[user]" id="utente_user">
+            <input type="password" placeholder="Password"  name = "utente[password]" id="utente_password">
+          </div>
+          <div class="row">
+           <p></p>
+          </div>
+          <div class="row">
+            <button type="submit" id="login-button" name="commit" value="Enter">Enter</button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!--<%= form_for :utente, url: "/utente/create" do |f| %>
   <p>
     <%= f.label :user %><br>
     <%= f.text_field :user %>
@@ -12,4 +50,4 @@
   <p>
     <%= f.submit %>
   </p>
-<% end %>
+<% end %>-->
