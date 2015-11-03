@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'postmortem/index'
+  post 'postmortem/index'
+
   get 'navbar/index'
 
   resources :get_labi, only: [:index]

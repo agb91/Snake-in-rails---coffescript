@@ -1,55 +1,58 @@
-<div class="container">
-  <div class="row">
-      <div class="col-sm-12">
-          <h1>Benvenuto mr <%=@attuale%>
-      </div>
-  </div>
-</div>
+<div class="indoor">
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-10">
-      <%= @tabella.html_safe %>
-    </div>
-    <div class="col-sm-2">
-       <div class="row">
-          Your best results
-       </div>
-       <div class="row">
-           1)  <%=@record1%>
-       </div>
-       <div class="row">
-           2)  <%=@record2%>
-       </div>
-       <div class="row">
-           3)  <%=@record3%>
-       </div>
-       <div class="row">
-          <p></p>
-       </div>
-        <div class="row">
-          Actual Record:
-       </div>
-       <div class="row">
-          <%= @actualRecord%>
-       </div>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Benvenuto mr <%=@attuale%>
+        </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="row">
-      <div class="col-sm-2">
-          <button onclick=avvia(0)> Labirinto 0 </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10">
+        <%= @tabella.html_safe %>
       </div>
       <div class="col-sm-2">
-          <button onclick=avvia(1)> Labirinto 1 </button>
+         <div class="row">
+            Your best results
+         </div>
+         <div class="row">
+             1)  <%=@record1%>
+         </div>
+         <div class="row">
+             2)  <%=@record2%>
+         </div>
+         <div class="row">
+             3)  <%=@record3%>
+         </div>
+         <div class="row">
+            <p></p>
+         </div>
+          <div class="row">
+            Actual Record:
+         </div>
+         <div class="row" id="actualRecord">
+            <%= @actualRecord%>
+         </div>
       </div>
-      <div class="col-sm-2">
-          <button onclick=avvia(2)> Labirinto 2 </button>
-      </div>
-      <div class="col-sm-2">
-          <button onclick=avvia(3)> Labirinto 3 </button>
-      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <button onclick=avvia(0)> Base </button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick=avvia(1)> Facile </button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick=avvia(2)> Medio </button>
+        </div>
+        <div class="col-sm-2">
+            <button onclick=avvia(3)> Difficile </button>
+        </div>
+    </div>
   </div>
 </div>

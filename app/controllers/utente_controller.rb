@@ -7,7 +7,9 @@ class UtenteController < ApplicationController
   def create
     #render plain: params[:utente]
     @ut = Utente.new(ad_params)
-    @ut.save
+    if(Utente.where(user: @ut.user).length==0)
+      @ut.save
+    end
     redirect_to '/home/index'
   end
 

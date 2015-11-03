@@ -1,8 +1,9 @@
 $('#nascondi').hide();
 serpente = ['4-7','4-6','4-5','4-4']
-time = 400
+time = 200
 direzione = 'right'
 morto = 0
+punti = 0
 
 window.addEventListener "keydown", (e) => keyb e.keyCode
 
@@ -35,16 +36,16 @@ getColor = (id) ->
 nero = getColor '4-7'
 
 setLabirinth = (l)->
-  bars = parseInt($('#barriers').text().trim())
+  bars = l.length
   for i in [0..bars-1]
-     livello = $('#livello'+i).text().trim()
-     if parseInt(l)==parseInt(livello)
-        xstart = $('#xstart'+i).text().trim()
-        ystart = $('#ystart'+i).text().trim()
-        length = $('#length'+i).text().trim()
-        direction = $('#direction'+i).text().trim()
-        ostacolo = getLabVector(livello,xstart,ystart,length,direction)
-        writeLabirinth ostacolo
+    livello = l[i].level
+    xstart = l[i].xstart
+    ystart = l[i].ystart
+    length = l[i].length
+    direction = l[i].direction
+    #alert livello + "; "+ xstart + "; "+ ystart + "; "+ length + "; "+ direction
+    ostacolo = getLabVector(livello,xstart,ystart,length,direction)
+    writeLabirinth ostacolo
 
 writeLabirinth = (ostacolo) ->
   for i in [0..ostacolo.length-1]
@@ -81,12 +82,15 @@ readJSON = (livello) ->
       if parseInt(attuale)==parseInt(livello)
         ris[n] = data.get_labi[i]
         n = n+1
-    console.log ris
+    setLabirinth(ris)
+
+leggiPunti = ->
+  punti = $('#actualRecord').text().trim()
 
 window.avvia = (l) ->
-  labs = readJSON(l).level
+  leggiPunti()
+  readJSON(l)
   draw()
-  setLabirinth(l)
   food()
   setInterval(forward, time)
 
@@ -108,9 +112,20 @@ checkAlive = (id) ->
   r3 = parseInt(ris[2])
   alive = false if r1==0 && r2==0 && r3==0
   alive = false if r1==0 && r2==0 && r3==255
-  alert 'morte' if alive is false && morto == 0
+  death() if alive is false && morto == 0
   morto = 1 if alive is false
   return alive
+
+death = ->
+    #$.post({
+    #    url : "/postmortem/index",
+    #    type : "post",
+    #    data : { data_value: JSON.stringify('aaaaa') }
+    #}).success((data) ->
+    #  console.log(data);
+    #  window.location.href = '/postmortem/index'
+    #)
+    window.location.href = '/postmortem/index?data='+punti
 
 checkFood = (id) ->
   food = false
@@ -151,6 +166,11 @@ eat = ->
    rr = getRandomInt(1,31)
    rc = getRandomInt(1,31)
    color('red',rr+'-'+rc)
+   aumentaPunti(10)
+
+aumentaPunti= (q) ->
+   punti = parseInt(punti) + parseInt(q)
+   $('#actualRecord').text(punti)
 
 goon = (nuovatesta) ->
    serpenteNew = []
