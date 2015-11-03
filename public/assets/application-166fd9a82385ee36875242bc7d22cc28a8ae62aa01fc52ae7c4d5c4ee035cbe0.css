@@ -1,7 +1,7 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Capriola);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url(https://fonts.googleapis.com/css?family=Capriola);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 /* line 5, /home/andrea/Scrivania/rails-propedeutico-foldesk/propedeutica/app/assets/stylesheets/navbar.scss */
 #cssmenu,
 #cssmenu ul,
@@ -14,7 +14,6 @@
   line-height: 1;
   display: block;
   position: relative;
-  font-family: Capriola, Helvetica, sans-serif;
 }
 
 /* line 18, /home/andrea/Scrivania/rails-propedeutico-foldesk/propedeutica/app/assets/stylesheets/navbar.scss */
