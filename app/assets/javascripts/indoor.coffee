@@ -4,6 +4,7 @@ time = 200
 direzione = 'right'
 morto = 0
 punti = 0
+barando = 0
 
 window.addEventListener "keydown", (e) => keyb e.keyCode
 
@@ -92,6 +93,7 @@ unHide = ->
   for c in [32..37]
     for r in [15..32]
       $("#"+r+"-"+c).css("opacity",1);
+  barando = 1
 
 window.avvia = (l) ->
   leggiPunti()
@@ -154,21 +156,42 @@ checkFood = (id) ->
   return food
 
 forwardRight = (vecchia) ->
-   colonna = parseInt(parseInt(vecchia.split('-')[1])+1) %% 33
+   ri = parseInt(vecchia.split('-')[0])
+   if barando == 0 or ri<15
+    colonna = parseInt(parseInt(vecchia.split('-')[1])+1) %% 33
+   else
+    colonna = parseInt(parseInt(vecchia.split('-')[1])+1) %% 38
    id = vecchia.split('-')[0] + '-' + colonna
 
 forwardLeft = (vecchia) ->
-   colonna = parseInt(parseInt(vecchia.split('-')[1])-1)
-   colonna = 32 if colonna == -1
+   ri = parseInt(vecchia.split('-')[0])
+   if barando == 0 or ri<15
+     colonna = parseInt(parseInt(vecchia.split('-')[1])-1)
+     colonna = 32 if colonna == -1
+   else
+     colonna = parseInt(parseInt(vecchia.split('-')[1])-1)
+     colonna = 37 if colonna == -1
    id = vecchia.split('-')[0] + '-' + colonna
 
 forwardUp = (vecchia) ->
-   riga = parseInt(parseInt(vecchia.split('-')[0])-1)
-   riga = 32 if riga == -1
+   co = parseInt(vecchia.split('-')[1])
+   if co<33
+     riga = parseInt(parseInt(vecchia.split('-')[0])-1)
+     riga = 32 if riga == -1
+   else
+     riga = parseInt(parseInt(vecchia.split('-')[0])-1)
+     if riga == 14
+       riga = 32
    id = riga + '-' + vecchia.split('-')[1]
 
 forwardDown = (vecchia) ->
-   riga = parseInt(parseInt(vecchia.split('-')[0])+1) %% 33
+   co = parseInt(vecchia.split('-')[1])
+   if co < 33
+     riga = parseInt(parseInt(vecchia.split('-')[0])+1) %% 33
+   else
+     riga = parseInt(parseInt(vecchia.split('-')[0])+1)
+     if riga == 33
+       riga=15
    id =  riga + '-' + vecchia.split('-')[1]
 
 gnam = (testa) ->
