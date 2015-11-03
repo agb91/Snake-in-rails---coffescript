@@ -12,6 +12,7 @@ class IndoorController < ApplicationController
     createLabirinth1
     createLabirinth2
     createLabirinth3
+    createLabirinth4
     #setLabirinth()
     @tabella =  creaTabella(32)
   end
@@ -21,6 +22,17 @@ class IndoorController < ApplicationController
     createBarrier(10,3,30,1,20,2)
     createBarrier(11,3,15,20,15,1)
     createBarrier(12,3,15,10,10,2)
+  end
+
+  def createLabirinth4
+    createBarrier(13,4,0,0,30,2)
+    createBarrier(14,4,5,0,30,2)
+    createBarrier(15,4,10,0,30,2)
+    createBarrier(16,4,15,0,30,2)
+    createBarrier(17,4,3,2,30,2)
+    createBarrier(18,4,8,2,30,2)
+    createBarrier(19,4,13,2,30,2)
+    createBarrier(19,4,17,2,30,2)
   end
 
   def createLabirinth2

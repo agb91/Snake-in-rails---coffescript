@@ -100,7 +100,16 @@ getRandomInt = (min, max) ->
 food = ->
   rr = getRandomInt(1,31)
   rc = getRandomInt(1,31)
-  color('red',rr+'-'+rc)
+  c = getColor (rr+'-'+rc)
+  l = c.length
+  ris = c.substring(4,l-1).split(',')
+  r1 = parseInt(ris[0])
+  r2 = parseInt(ris[1])
+  r3 = parseInt(ris[2])
+  if r1==255 && r2==255 && r3==0
+    color('red',rr+'-'+rc)
+  else
+    food()
 
 checkAlive = (id) ->
   alive = true
