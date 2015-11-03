@@ -13,8 +13,18 @@ class IndoorController < ApplicationController
     createLabirinth2
     createLabirinth3
     createLabirinth4
-    #setLabirinth()
     @tabella =  creaTabella(32)
+  end
+
+  def createLabirinth4
+    createBarrier(13,4,0,0,30,1)
+    createBarrier(14,4,4,0,30,1)
+    createBarrier(15,4,8,0,30,1)
+    createBarrier(16,4,12,0,30,1)
+    createBarrier(17,4,16,0,30,1)
+    createBarrier(18,4,2,2,30,1)
+    createBarrier(19,4,6,2,30,1)
+    createBarrier(20,4,14,2,30,1)
   end
 
   def createLabirinth3
@@ -22,17 +32,6 @@ class IndoorController < ApplicationController
     createBarrier(10,3,30,1,20,2)
     createBarrier(11,3,15,20,15,1)
     createBarrier(12,3,15,10,10,2)
-  end
-
-  def createLabirinth4
-    createBarrier(13,4,0,0,30,2)
-    createBarrier(14,4,5,0,30,2)
-    createBarrier(15,4,10,0,30,2)
-    createBarrier(16,4,15,0,30,2)
-    createBarrier(17,4,3,2,30,2)
-    createBarrier(18,4,8,2,30,2)
-    createBarrier(19,4,13,2,30,2)
-    createBarrier(19,4,17,2,30,2)
   end
 
   def createLabirinth2
@@ -63,7 +62,7 @@ class IndoorController < ApplicationController
     end
   end
 
-  def repository
+=begin  def repository
      @repo = '<div hidden class="container" id="nascondi">'
      for i in (0..@lab.size-1)
         @repo = @repo + '<div class="row">'
@@ -76,23 +75,6 @@ class IndoorController < ApplicationController
      end
      @repo = @repo + '<div id=barriers>' + @lab.size.to_s + '</div>'
      @repo = @repo + '</div>'
-  end
-
-=begin  def setLabirinth()
-    @lab = Labirinto.all()
-    @livello = []
-    @xstart = []
-    @ystart = []
-    @length = []
-    @direction = []
-    for i in (0..(@lab.size-1))
-      @livello.push(@lab[i].livello)
-      @xstart.push(@lab[i].xstart)
-      @ystart.push(@lab[i].ystart)
-      @length.push(@lab[i].length)
-      @direction.push(@lab[i].direction)
-    end
-    @repo = repository
   end
 =end
 
@@ -107,9 +89,13 @@ class IndoorController < ApplicationController
 
   def creaRiga(rigafissa,colonnetotali)
     @ris = '<tr>'
-    for i in (0..colonnetotali)
+    for i in (0..(colonnetotali+5))
       id = rigafissa.to_s+"-"+i.to_s
-      @ris = @ris + "<td style='background-color: yellow;' id='"+id+"'> &nbsp </td>"
+      if i <= colonnetotali
+        @ris = @ris + "<td style='background-color: yellow;' id='"+id+"'> &nbsp </td>"
+      else
+        @ris = @ris + "<td style='background-color: yellow; opacity: 0' id='"+id+"'> &nbsp </td>"
+      end
     end
     @ris = @ris + '</tr>'
     return @ris

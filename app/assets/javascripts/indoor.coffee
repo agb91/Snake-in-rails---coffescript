@@ -12,6 +12,7 @@ keyb = (i) ->
    downkey() if i==40
    rightkey() if i==39
    leftkey() if i==37
+   unHide() if i==80
 
 upkey = ->
    direzione = 'up'
@@ -86,6 +87,11 @@ readJSON = (livello) ->
 
 leggiPunti = ->
   punti = $('#actualRecord').text().trim()
+
+unHide = ->
+  for c in [32..37]
+    for r in [15..32]
+      $("#"+r+"-"+c).css("opacity",1);
 
 window.avvia = (l) ->
   leggiPunti()

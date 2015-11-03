@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h3>Benvenuto mr <%=@attuale%></h3>
+            <h1>Benvenuto mr <%=@attuale%>
         </div>
     </div>
   </div>
@@ -41,22 +41,23 @@
 
   <div class="container">
     <div class="row">
-        <div class="col-sm-2">
-            <button class = "buttons" onclick=avvia(0)> Labirinto Base </button>
+        <div class="col-sm-10">
+            <div class="col-sm-2">
+                <button class= "buttons" onclick=avvia(0)> Labirinto Base </button>
+            </div>
+            <div class="col-sm-2">
+                <button class= "buttons" onclick=avvia(1)> Labirinto Facile </button>
+            </div>
+            <div class="col-sm-2">
+                <button class= "buttons" onclick=avvia(2)> Labirinto Medio </button>
+            </div>
+            <div class="col-sm-2">
+                <button class= "buttons" onclick=avvia(3)> Labirinto Difficile </button>
+            </div>
+            <div class="col-sm-2">
+                <button class= "buttons" onclick=avvia(4)> Impossibile </button>
+            </div>
         </div>
-        <div class="col-sm-2">
-            <button class = "buttons" onclick=avvia(1)> Labirinto Facile </button>
-        </div>
-        <div class="col-sm-2">
-            <button class = "buttons" onclick=avvia(2)> Labirinto Medio </button>
-        </div>
-        <div class="col-sm-2">
-            <button class = "buttons" onclick=avvia(3)> Labirinto Difficile </button>
-        </div>
-        <div class="col-sm-2">
-            <button class = "buttons" onclick=avvia(4)> Labirinto Impossibile </button>
-        </div>
-
     </div>
   </div>
 </div>
