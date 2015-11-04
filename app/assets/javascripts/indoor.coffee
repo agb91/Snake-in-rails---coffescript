@@ -165,10 +165,12 @@ getOpacity = (id) ->
   cid = '#'+id
   $(cid).css('opacity')
 
-larghezzaRiga = (ri) ->
-  record = 0
+larghezzaRiga = (ri, colonna) ->
+  giusta = 0
   cont = 0
   for i in [0..37]
+    if i == colonna
+      giusta = 1
     id = ri+"u"+i
     col = getColor(id)
     l=col.length
@@ -181,13 +183,13 @@ larghezzaRiga = (ri) ->
     cont=cont+1 if r1==255 && r2==255 && r3==0 && opa==1
     cont=cont+1 if r1==0 && r2==0 && r3==0
     cont=cont+1 if r1==255 && r2==0 && r3==0
-    cont = 0 if opa==0
     if opa==0
-      if cont>record
+      if giusta == 1
         record = cont
+        giusta = 2
       cont = 0
-    if cont>record
-      record = cont
+  if giusta == 1
+    record = cont
   return record
 
 altezzaColonna = (co, riga) ->
@@ -234,7 +236,7 @@ forwardRight = (vecchia) ->
    colonna = parseInt(parseInt(vecchia.split('u')[1])+1)
    id = ri + 'u' + colonna
    if fuori(id)
-     colonna = parseInt(colonna) - parseInt(larghezzaRiga ri)
+     colonna = parseInt(colonna) - parseInt(larghezzaRiga(ri,parseInt(colonna-1)))
    id = ri + 'u' + colonna
    return id
 
@@ -243,7 +245,7 @@ forwardLeft = (vecchia) ->
    colonna = parseInt(parseInt(vecchia.split('u')[1])-1)
    id = ri + 'u' + colonna
    if fuori(id)
-     colonna = colonna + parseInt(larghezzaRiga ri)
+     colonna = colonna + parseInt(larghezzaRiga(ri,parseInt(colonna+1)))
    id = ri + 'u' + colonna
    return id
 
