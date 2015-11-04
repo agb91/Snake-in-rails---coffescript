@@ -79,7 +79,7 @@ class IndoorController < ApplicationController
 =end
 
   def creaTabella(dimensione)
-    @ris = '<table width="100%">'
+    @ris = '<table>'
     for i in (0..dimensione)
       @ris = @ris + creaRiga(i,dimensione)
     end
@@ -92,9 +92,9 @@ class IndoorController < ApplicationController
     for i in (0..(colonnetotali+5))
       id = rigafissa.to_s+"-"+i.to_s
       if i <= colonnetotali
-        @ris = @ris + "<td style='background-color: yellow;' id='"+id+"'> &nbsp </td>"
+        @ris = @ris + "<td class= 'td' id='"+id+"'></td>"
       else
-        @ris = @ris + "<td style='background-color: yellow; opacity: 0' id='"+id+"'> &nbsp </td>"
+        @ris = @ris + "<td class= 'tdo' id='"+id+"'></td>"
       end
     end
     @ris = @ris + '</tr>'
