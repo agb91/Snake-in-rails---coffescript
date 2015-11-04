@@ -107,6 +107,18 @@ unHide = ->
     for r in [32..34]
       $("#"+r+"u"+c).css("opacity",1);
       #$("#"+r+"u"+c).css("border","1px solid blue");
+  for c in [0..8]
+    for r in [20..24]
+      $("#"+r+"u"+c).css("opacity",0);
+      #$("#"+r+"u"+c).css("border","1px solid blue");
+  for c in [3..6]
+    for r in [13..20]
+      $("#"+r+"u"+c).css("opacity",0);
+      #$("#"+r+"u"+c).css("border","1px solid blue");
+  for c in [23..24]
+    for r in [1..8]
+      $("#"+r+"u"+c).css("opacity",0);
+      #$("#"+r+"u"+c).css("border","1px solid blue");
   barando = 1
 
 window.avvia = (l) ->
