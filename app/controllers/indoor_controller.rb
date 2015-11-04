@@ -62,36 +62,24 @@ class IndoorController < ApplicationController
     end
   end
 
-=begin  def repository
-     @repo = '<div hidden class="container" id="nascondi">'
-     for i in (0..@lab.size-1)
-        @repo = @repo + '<div class="row">'
-        @repo = @repo + '<div class="col-sm-2" id="livello'+i.to_s+'">'+@livello[i]+'</div>'
-        @repo = @repo + '<div class="col-sm-2" id="xstart'+i.to_s+'">'+@xstart[i]+'</div>'
-        @repo = @repo + '<div class="col-sm-2" id="ystart'+i.to_s+'">'+@ystart[i]+'</div>'
-        @repo = @repo + '<div class="col-sm-2" id="length'+i.to_s+'">'+@length[i]+'</div>'
-        @repo = @repo + '<div class="col-sm-2" id="direction'+i.to_s+'">'+@direction[i]+'</div>'
-        @repo = @repo + '</div>'
-     end
-     @repo = @repo + '<div id=barriers>' + @lab.size.to_s + '</div>'
-     @repo = @repo + '</div>'
-  end
-=end
-
   def creaTabella(dimensione)
     @ris = '<table>'
-    for i in (0..dimensione)
-      @ris = @ris + creaRiga(i,dimensione)
+    for i in (0..(dimensione+5))
+      if i<=dimensione
+        @ris = @ris + creaRiga(i,dimensione,'std')
+      else
+        @ris = @ris + creaRiga(i,dimensione,'h')
+      end
     end
     @ris = @ris + '</table>'
     return @ris
   end
 
-  def creaRiga(rigafissa,colonnetotali)
+  def creaRiga(rigafissa,colonnetotali, t)
     @ris = '<tr>'
     for i in (0..(colonnetotali+5))
-      id = rigafissa.to_s+"-"+i.to_s
-      if i <= colonnetotali
+      id = rigafissa.to_s+"u"+i.to_s
+      if i <= colonnetotali and t == 'std'
         @ris = @ris + "<td class= 'td' id='"+id+"'></td>"
       else
         @ris = @ris + "<td class= 'tdo' id='"+id+"'></td>"
