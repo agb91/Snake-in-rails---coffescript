@@ -1,0 +1,22 @@
+I"x(function() {
+  var addToMovable, movable;
+
+  movable = [];
+
+  window.drag = function(id) {
+    return addToMovable(id);
+  };
+
+  addToMovable = function(id) {
+    movable.push('#' + id);
+    return $('#' + id).css('position', 'absolute');
+  };
+
+  document.mousemove = (function(_this) {
+    return function(e) {
+      return alert('muove');
+    };
+  })(this);
+
+}).call(this);
+:ET

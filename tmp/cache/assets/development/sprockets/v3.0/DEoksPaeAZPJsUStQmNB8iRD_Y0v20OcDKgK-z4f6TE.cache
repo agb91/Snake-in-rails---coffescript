@@ -1,0 +1,13 @@
+I"í(function() {
+  window.drag = function(id) {
+    $('#' + id).css('position', 'absolute');
+    $('#' + id).animate({
+      'top': event.pageY
+    });
+    return $('#' + id).animate({
+      'left': event.pageX
+    });
+  };
+
+}).call(this);
+:ET

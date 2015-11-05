@@ -1,29 +1,29 @@
-<div class="container">
-  <div class="col-sm-5"></div>
+<div class="container" onmousemove=omm()>
+  <div class="col-sm-4"></div>
   <div class="col-sm-5">
     <h2>General Ranking</h2>
     <table class="bordered centra">
         <thead>
         <tr>
-            <th>#</th>
-            <th>Player</th>
-            <th>Result</th>
+            <th id = 'genh1' onclick=drag('genh1')>#</th>
+            <th id = 'genh2' onclick=drag('genh2')>Player</th>
+            <th id = 'genh3' onclick=drag('genh3')>Result</th>
         </tr>
         </thead>
         <tr>
-            <td>1</td>
-            <td><%= @gr1name %></td>
-            <td><%= @gr1res %></td>
+            <td id = 'gen11' onclick=drag('gen11')>1</td>
+            <td id = 'gen12' onclick=drag('gen12')><%= @grnames[0] %></td>
+            <td id = 'gen13' onclick=drag('gen13')><%= @grres[0] %></td>
         </tr>
         <tr>
-            <td>2</td>
-            <td><%= @gr2name %></td>
-            <td><%= @gr2res %></td>
+            <td id = 'gen21' onclick=drag('gen21')>2</td>
+            <td id = 'gen22' onclick=drag('gen22')><%= @grnames[1] %></td>
+            <td id = 'gen23' onclick=drag('gen23')><%= @grres[1] %></td>
         </tr>
         <tr>
-            <td>3</td>
-            <td><%= @gr3name %></td>
-            <td><%= @gr3res %></td>
+            <td id = 'gen31' onclick=drag('gen31')>3</td>
+            <td id = 'gen32' onclick=drag('gen32')><%= @grnames[2] %></td>
+            <td id = 'gen33' onclick=drag('gen33')><%= @grres[2] %></td>
         </tr>
     </table>
   </div>

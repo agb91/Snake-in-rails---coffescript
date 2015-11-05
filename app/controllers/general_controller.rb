@@ -1,17 +1,27 @@
 class GeneralController < ApplicationController
 
   def index
+    @grnames = []
+    @grres = []
+    utenti = utentiOrdinati
+    setInForm(utenti)
+  end
+
+  def utentiOrdinati
     utenti = Utente.all
-    utenti = utenti.sort_by { |h| h[:record1] }
-    ut = utenti.pop
-    @gr1name = ut.user
-    @gr1res = ut.record1
-    ut = utenti.pop
-    @gr2name = ut.user
-    @gr2res = ut.record1
-    ut = utenti.pop
-    @gr3name = ut.user
-    @gr3res = ut.record1
+    utenti = utenti.sort_by { |h| h[:record1]}
+  end
+
+  def setInForm(utenti)
+    tot = utenti.length
+    for i in (0..2)
+      setUtente(utenti[(tot-i-1)],i)
+    end
+  end
+
+  def setUtente(utente, numero)
+    @grnames[numero] = utente.user
+    @grres[numero] = utente.record1
   end
 
 end

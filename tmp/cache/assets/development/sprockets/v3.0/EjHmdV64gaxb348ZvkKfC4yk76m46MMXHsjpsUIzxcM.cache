@@ -1,0 +1,31 @@
+I"¤(function() {
+  var addToMovable, movable, move, run;
+
+  movable = [];
+
+  run = setInterval(alert('a', 1000));
+
+  window.drag = function(id) {
+    clearInterval(run);
+    return addToMovable(id);
+  };
+
+  addToMovable = function(id) {
+    movable.push('#' + id);
+    return $('#' + id).css('position', 'absolute');
+  };
+
+  move = function() {
+    var i, id, j, ref, results;
+    alert('move');
+    results = [];
+    for (i = j = 0, ref = movable.length - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+      id = movable[i];
+      $(id).css('left', event.pageX);
+      results.push($(id).css('top', event.pageY));
+    }
+    return results;
+  };
+
+}).call(this);
+:ET

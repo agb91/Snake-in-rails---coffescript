@@ -1,0 +1,9 @@
+I"c(function() {
+  var omm;
+
+  omm = function() {
+    return alert('ciao');
+  };
+
+}).call(this);
+:ET

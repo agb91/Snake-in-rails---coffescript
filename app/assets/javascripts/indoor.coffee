@@ -223,18 +223,18 @@ checkAlive = (id) ->
   return alive
 
 death = ->
-    window.location.href = '/postmortem/index?data='+punti
+  window.location.href = '/postmortem/index?data='+punti
 
 checkFood = (id) ->
-  food = false
+  f = false
   c = getColor id
   l = c.length
   ris = c.substring(4,l-1).split(',')
   r1 = parseInt(ris[0])
   r2 = parseInt(ris[1])
   r3 = parseInt(ris[2])
-  food = true if r1==255 && r2==0 && r3==0
-  return food
+  f = true if r1==255 && r2==0 && r3==0
+  return f
 
 getOpacity = (id) ->
   cid = '#'+id
@@ -354,11 +354,9 @@ abbassaTime = (q) ->
    run = setInterval(forward, time)
 
 eat = ->
-   rr = getRandomInt(1,31)
-   rc = getRandomInt(1,31)
-   color('red',rr+'u'+rc)
    abbassaTime(10)
    aumentaPunti(10)
+   food()
    if hidden>7
     shakeVertical()
    unHide()

@@ -1,0 +1,18 @@
+I"õ(function() {
+  var movable;
+
+  movable = [];
+
+  window.drag = function(id) {
+    movable.push(id);
+    return alert(movable);
+  };
+
+  window.omm = function() {
+    var x, y;
+    x = event.pageX;
+    return y = event.pageY;
+  };
+
+}).call(this);
+:ET

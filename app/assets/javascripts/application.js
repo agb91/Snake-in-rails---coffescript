@@ -15,5 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require indoor
-//= require indoor-utils
+//= require general
 //= require_tree .

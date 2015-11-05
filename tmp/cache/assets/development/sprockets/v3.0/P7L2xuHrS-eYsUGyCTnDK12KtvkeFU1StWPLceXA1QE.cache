@@ -1,0 +1,25 @@
+I"P(function() {
+  var movable;
+
+  movable = [];
+
+  window.drag = function(id) {
+    movable.push(id);
+    return $('#' + id).css('position', 'absolute');
+  };
+
+  window.omm = function() {
+    var i, id, j, ref, results, x, y;
+    x = event.pageX;
+    y = event.pageY;
+    results = [];
+    for (i = j = 0, ref = movable.length - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+      id = movable[i];
+      $('#' + id).css('margin-left', x - $('#' + id).left);
+      results.push($('#' + id).css('margin-top', y - $('#' + id).top));
+    }
+    return results;
+  };
+
+}).call(this);
+:ET

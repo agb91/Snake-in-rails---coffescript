@@ -1,0 +1,9 @@
+I"t(function() {
+  var drag;
+
+  drag = function(id) {
+    return alert('trascinatore vivo');
+  };
+
+}).call(this);
+:ET

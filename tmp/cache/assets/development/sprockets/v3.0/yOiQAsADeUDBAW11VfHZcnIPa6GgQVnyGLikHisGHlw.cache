@@ -1,0 +1,7 @@
+I"^(function() {
+  window.omm = function() {
+    return alert('ciao');
+  };
+
+}).call(this);
+:ET

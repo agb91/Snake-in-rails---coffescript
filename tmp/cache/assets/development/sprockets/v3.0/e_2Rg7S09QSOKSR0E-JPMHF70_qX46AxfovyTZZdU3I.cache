@@ -1,0 +1,7 @@
+I"{(function() {
+  window.drag = function(id) {
+    return $('#' + id).css('position', 'absolute');
+  };
+
+}).call(this);
+:ET

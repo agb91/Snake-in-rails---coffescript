@@ -1,0 +1,27 @@
+I"í(function() {
+  var movable, offsetl, offsett;
+
+  movable = 'null';
+
+  offsetl = 0;
+
+  offsett = 0;
+
+  window.drag = function(id) {
+    movable = id;
+    offsetl = event.pageX;
+    offsett = event.pageY;
+    return $('#' + id).css('position', 'absolute');
+  };
+
+  window.omm = function() {
+    var id, x, y;
+    x = event.pageX;
+    y = event.pageY;
+    id = movable;
+    $('#' + id).css('margin-left', x - offsetl);
+    return $('#' + id).css('margin-top', y - offsett);
+  };
+
+}).call(this);
+:ET

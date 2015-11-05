@@ -1,0 +1,36 @@
+I"~(function() {
+  var movable, moving, offsetl, offsett;
+
+  movable = 'null';
+
+  moving = false;
+
+  offsetl = 0;
+
+  offsett = 0;
+
+  window.drag = function(id) {
+    if (moving === false) {
+      moving = true;
+    } else {
+      moving = false;
+    }
+    movable = id;
+    offsetl = event.pageX;
+    offsett = event.pageY;
+    return $('#' + id).css('position', 'absolute');
+  };
+
+  window.omm = function() {
+    var id, x, y;
+    x = event.pageX;
+    y = event.pageY;
+    id = movable;
+    if (moving) {
+      $('#' + id).css('margin-left', x - offsetl);
+      return $('#' + id).css('margin-top', y - offsett);
+    }
+  };
+
+}).call(this);
+:ET

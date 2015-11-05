@@ -2,11 +2,9 @@
   <div class="body-login">
     <div class="wrapper-login">
       <div class="container-login">
-        <h1>Login</h1>
-
+        <h1>Login</h1><!-- form automatico di rails scartato per problema grafica, conservato sotto nella parte commentata-->
         <form action= "/login/read" method="post" class="form-login">
           <div class="row">
-            <input type="hidden" name="authenticity_token" value="itPANc5t7mCfAPFlXF1gCyvsRhBJinLLrRgcbPdq44qM4/SVuTuQt82+k1P/GB7jqw7HAaZEVqKPv2MwFRuLPw==" />
             <input type="text" placeholder="Username" name = "utente[user]" id="utente_user">
             <input type="password" placeholder="Password"  name = "utente[password]" id="utente_password">
           </div>

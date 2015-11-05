@@ -1,0 +1,7 @@
+I"](function() {
+  window.drag = function(id) {
+    return alert(id);
+  };
+
+}).call(this);
+:ET
