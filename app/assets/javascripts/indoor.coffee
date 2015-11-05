@@ -1,10 +1,12 @@
 $('#nascondi').hide();
 serpente = ['4u7','4u6','4u5','4u4']
-time = 200
+time = 250
 direzione = 'right'
 morto = 0
 punti = 0
 barando = 0
+hidden = 0
+shakera = 0
 
 window.addEventListener "keydown", (e) => keyb e.keyCode
 
@@ -34,7 +36,7 @@ color = (col, id) ->
 
 round = (id) ->
   cid = '#'+id
-  $(cid).css('border-radius','7px')
+  $(cid).css('border-radius','20px')
 
 getColor = (id) ->
   cid = '#'+id
@@ -95,38 +97,97 @@ leggiPunti = ->
   punti = $('#actualRecord').text().trim()
 
 unHide = ->
-  for c in [32..37]
-    for r in [15..32]
-      $("#"+r+"u"+c).css("opacity",1);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  for c in [10..25]
-    for r in [34..37]
-      $("#"+r+"u"+c).css("opacity",1);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  for c in [10..14]
-    for r in [32..34]
-      $("#"+r+"u"+c).css("opacity",1);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  for c in [0..8]
-    for r in [20..24]
-      $("#"+r+"u"+c).css("opacity",0);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  for c in [3..6]
-    for r in [13..20]
-      $("#"+r+"u"+c).css("opacity",0);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  for c in [23..24]
-    for r in [1..8]
-      $("#"+r+"u"+c).css("opacity",0);
-      #$("#"+r+"u"+c).css("border","1px solid blue");
-  barando = 1
+  hidden = hidden+1
+  if(hidden==1)
+    for c in [32..37]
+      for r in [15..32]
+        $("#"+r+"u"+c).css("opacity",1);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+  if(hidden==2)
+    for c in [10..25]
+      for r in [34..37]
+        $("#"+r+"u"+c).css("opacity",1);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+    hidden=3
+  if(hidden==3)
+    for c in [10..14]
+      for r in [32..34]
+        $("#"+r+"u"+c).css("opacity",1);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+  if(hidden==4)
+    for c in [0..8]
+      for r in [20..24]
+        $("#"+r+"u"+c).css("opacity",0);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+  if(hidden==5)
+    for c in [3..6]
+      for r in [13..20]
+        $("#"+r+"u"+c).css("opacity",0);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+  if(hidden==6)
+    for c in [23..24]
+      for r in [1..8]
+        $("#"+r+"u"+c).css("opacity",0);
+        #$("#"+r+"u"+c).css("border","1px solid blue");
+  if(hidden==7)
+    shakeVertical()
+  if(hidden==8)
+    shakeHorizontal()
+
+moveDown = (id) ->
+  $(id).animate({'margin-left': '1px'})
+  $(id).css('position','absolute')
+  $(id).animate({'margin-top': '50px'})
+
+moveUp = (id) ->
+  $(id).animate({'margin-top': '0px'})
+
+moveRight = (id) ->
+  $(id).animate({'margin-left': '50px'})
+
+moveLeft = (id) ->
+  $(id).animate({'margin-left': '1px'})
+
+shake = (a, dir)->
+  if dir == 'v'
+    for i in [0..32]
+      moveDown('#'+i+'u'+a)
+    for i in [0..32]
+      moveUp('#'+i+'u'+a)
+  if dir == 'h'
+    for i in [0..32]
+      moveRight('#'+a+'u'+i)
+    for i in [0..32]
+      moveLeft('#'+a+'u'+i)
+
+shakeVertical = ->
+  shake(1,'v')
+  shake(3,'v')
+  shake(8,'v')
+  shake(11,'v')
+  shake(13,'v')
+  shake(18,'v')
+  shake(21,'v')
+  shake(23,'v')
+  shake(28,'v')
+
+shakeHorizontal = ->
+  shake(1,'h')
+  shake(3,'h')
+  shake(8,'h')
+  shake(11,'h')
+  shake(13,'h')
+  shake(18,'h')
+  shake(21,'h')
+  shake(23,'h')
+  shake(28,'h')
 
 window.avvia = (l) ->
   leggiPunti()
   readJSON(l)
   draw()
   food()
-  setInterval(forward, time)
+  run = setInterval(forward, time)
 
 getRandomInt = (min, max) ->
     Math.floor(Math.random() * (max - min + 1)) + min
@@ -135,12 +196,14 @@ food = ->
   rr = getRandomInt(1,31)
   rc = getRandomInt(1,31)
   c = getColor (rr+'u'+rc)
+  opa = getOpacity (rr+'u'+rc)
+  opa = parseInt(opa)
   l = c.length
   ris = c.substring(4,l-1).split(',')
   r1 = parseInt(ris[0])
   r2 = parseInt(ris[1])
   r3 = parseInt(ris[2])
-  if r1==255 && r2==255 && r3==0
+  if r1==255 && r2==255 && r3==0 && opa==1
     color('red',rr+'u'+rc)
   else
     food()
@@ -285,11 +348,20 @@ gnam = (testa) ->
    eat() if ris is true
    return ris
 
+abbassaTime = (q) ->
+   time = (time-q) if time>200
+   clearInterval(run)
+   run = setInterval(forward, time)
+
 eat = ->
    rr = getRandomInt(1,31)
    rc = getRandomInt(1,31)
    color('red',rr+'u'+rc)
+   abbassaTime(10)
    aumentaPunti(10)
+   if hidden>7
+    shakeVertical()
+   unHide()
 
 aumentaPunti= (q) ->
    punti = parseInt(punti) + parseInt(q)

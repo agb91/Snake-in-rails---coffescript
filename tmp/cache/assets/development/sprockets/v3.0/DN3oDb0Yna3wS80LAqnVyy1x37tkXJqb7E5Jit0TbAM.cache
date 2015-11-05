@@ -1,0 +1,128 @@
+I"…(function() {
+  var altezzaColonna, color, fuori, getColor, getOpacity, getRandomInt, larghezzaRiga, round;
+
+  color = function(col, id) {
+    var cid;
+    cid = '#' + id;
+    $(cid).css('background-color', col);
+    return $(cid).css('border-radius', '0px');
+  };
+
+  round = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('border-radius', '7px');
+  };
+
+  getColor = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('background-color');
+  };
+
+  getRandomInt = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  getOpacity = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('opacity');
+  };
+
+  larghezzaRiga = function(ri, colonna) {
+    var col, cont, giusta, i, id, j, l, opa, r1, r2, r3, record, ris;
+    giusta = 0;
+    cont = 0;
+    for (i = j = 0; j <= 37; i = ++j) {
+      if (i === colonna) {
+        giusta = 1;
+      }
+      id = ri + "u" + i;
+      col = getColor(id);
+      l = col.length;
+      ris = col.substring(4, l - 1).split(',');
+      r1 = parseInt(ris[0]);
+      r2 = parseInt(ris[1]);
+      r3 = parseInt(ris[2]);
+      opa = getOpacity(id);
+      opa = parseInt(opa);
+      if (r1 === 255 && r2 === 255 && r3 === 0 && opa === 1) {
+        cont = cont + 1;
+      }
+      if (r1 === 0 && r2 === 0 && r3 === 0) {
+        cont = cont + 1;
+      }
+      if (r1 === 255 && r2 === 0 && r3 === 0) {
+        cont = cont + 1;
+      }
+      if (opa === 0) {
+        if (giusta === 1) {
+          record = cont;
+          giusta = 2;
+        }
+        cont = 0;
+      }
+    }
+    if (giusta === 1) {
+      record = cont;
+    }
+    return record;
+  };
+
+  altezzaColonna = function(co, riga) {
+    var col, cont, giusta, i, id, j, l, opa, r1, r2, r3, record, ris;
+    giusta = 0;
+    cont = 0;
+    for (i = j = 0; j <= 37; i = ++j) {
+      if (i === riga) {
+        giusta = 1;
+      }
+      id = i + "u" + co;
+      col = getColor(id);
+      l = col.length;
+      ris = col.substring(4, l - 1).split(',');
+      r1 = parseInt(ris[0]);
+      r2 = parseInt(ris[1]);
+      r3 = parseInt(ris[2]);
+      opa = getOpacity(id);
+      opa = parseInt(opa);
+      if (r1 === 255 && r2 === 255 && r3 === 0 && opa === 1) {
+        cont = cont + 1;
+      }
+      if (r1 === 0 && r2 === 0 && r3 === 0) {
+        cont = cont + 1;
+      }
+      if (r1 === 255 && r2 === 0 && r3 === 0) {
+        cont = cont + 1;
+      }
+      if (opa === 0) {
+        if (giusta === 1) {
+          record = cont;
+          giusta = 2;
+        }
+        cont = 0;
+      }
+    }
+    if (giusta === 1) {
+      record = cont;
+    }
+    return record;
+  };
+
+  fuori = function(id) {
+    var co, ri, ris;
+    ris = false;
+    if (parseInt(getOpacity(id)) === 0) {
+      ris = true;
+    }
+    ri = parseInt(id.split('u')[0]);
+    co = parseInt(id.split('u')[1]);
+    if (ri > 37 || ri < 0 || co > 37 || co < 0) {
+      ris = true;
+    }
+    return ris;
+  };
+
+}).call(this);
+:ET

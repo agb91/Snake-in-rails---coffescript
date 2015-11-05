@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'general/index'
+
   get 'postmortem/index'
   post 'postmortem/index'
 

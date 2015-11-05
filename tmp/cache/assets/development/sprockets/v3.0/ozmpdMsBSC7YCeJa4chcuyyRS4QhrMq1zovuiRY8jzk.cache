@@ -1,0 +1,46 @@
+I"š(function() {
+  var unHide;
+
+  unHide = function() {
+    var c, i, j, k, l, m, n, o, p, q, r, results, s, t;
+    for (c = i = 32; i <= 37; c = ++i) {
+      for (r = j = 15; j <= 32; r = ++j) {
+        $("#" + r + "u" + c).css("opacity", 1);
+      }
+    }
+    for (c = k = 10; k <= 25; c = ++k) {
+      for (r = l = 34; l <= 37; r = ++l) {
+        $("#" + r + "u" + c).css("opacity", 1);
+      }
+    }
+    for (c = m = 10; m <= 14; c = ++m) {
+      for (r = n = 32; n <= 34; r = ++n) {
+        $("#" + r + "u" + c).css("opacity", 1);
+      }
+    }
+    for (c = o = 0; o <= 8; c = ++o) {
+      for (r = p = 20; p <= 24; r = ++p) {
+        $("#" + r + "u" + c).css("opacity", 0);
+      }
+    }
+    for (c = q = 3; q <= 6; c = ++q) {
+      for (r = s = 13; s <= 20; r = ++s) {
+        $("#" + r + "u" + c).css("opacity", 0);
+      }
+    }
+    results = [];
+    for (c = t = 23; t <= 24; c = ++t) {
+      results.push((function() {
+        var results1, u;
+        results1 = [];
+        for (r = u = 1; u <= 8; r = ++u) {
+          results1.push($("#" + r + "u" + c).css("opacity", 0));
+        }
+        return results1;
+      })());
+    }
+    return results;
+  };
+
+}).call(this);
+:ET

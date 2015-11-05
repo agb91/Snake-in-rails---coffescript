@@ -21,25 +21,29 @@ $break-small: 740px;
   {
     opacity: 0;
     //border-radius: 7px;
-    width: 25px;
+    width: 22px;
     height: 16px;
     background-color: yellow;
     @media screen and (max-height: $break-small) {
-      width: 20px;
+      width: 18px;
       height: 11px;
     }
   }
   .td
   {
-    width: 25px;
+    width: 22px;
     height: 16px;
     //border-radius: 7px;
     //border: 1px solid blue;
     background-color: yellow;
     @media screen and (max-height: $break-small) {
-      width: 20px;
+      width: 18px;
       height: 11px;
     }
+  }
+  .muovi
+  {
+    margin-left: 3px;
   }
 }
 

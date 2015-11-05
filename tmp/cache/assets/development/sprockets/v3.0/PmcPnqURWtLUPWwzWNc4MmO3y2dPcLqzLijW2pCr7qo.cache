@@ -1,0 +1,38 @@
+I"‰(function() {
+  window.draw = function() {
+    var i, j, k, len, ref, results, results1, rs;
+    rs = (function() {
+      results = [];
+      for (var j = 0, ref = serpente.length; 0 <= ref ? j <= ref : j >= ref; 0 <= ref ? j++ : j--){ results.push(j); }
+      return results;
+    }).apply(this);
+    results1 = [];
+    for (k = 0, len = rs.length; k < len; k++) {
+      i = rs[k];
+      color('black', serpente[i]);
+      results1.push(round(serpente[i]));
+    }
+    return results1;
+  };
+
+  window.color = function(col, id) {
+    var cid;
+    cid = '#' + id;
+    $(cid).css('background-color', col);
+    return $(cid).css('border-radius', '0px');
+  };
+
+  window.round = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('border-radius', '7px');
+  };
+
+  window.getColor = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('background-color');
+  };
+
+}).call(this);
+:ET

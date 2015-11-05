@@ -1,0 +1,24 @@
+I"¶(function() {
+  var color, getColor, round;
+
+  color = function(col, id) {
+    var cid;
+    cid = '#' + id;
+    $(cid).css('background-color', col);
+    return $(cid).css('border-radius', '0px');
+  };
+
+  round = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('border-radius', '7px');
+  };
+
+  getColor = function(id) {
+    var cid;
+    cid = '#' + id;
+    return $(cid).css('background-color');
+  };
+
+}).call(this);
+:ET
